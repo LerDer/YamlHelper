@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.21'
+//    id 'org.jetbrains.intellij' version '1.17.4'
+}
+
+group 'com.wd'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile 'org.yaml:snakeyaml:1.17'
+    compile 'cn.hutool:hutool-all:5.8.26'
+
+
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+//    compile 'com.fasterxml.jackson.core:jackson-core:2.7.4'
+//    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.4'
+    compile 'com.github.anymaker:tnjson:2.0'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2019.1.4'
+    intellij.updateSinceUntilBuild false
+    localPath '/Users/lww/Downloads/ideaJar/ideaIC-2019.1.4'
+}
+patchPluginXml {
+    changeNotes """
+     version 1.0.0: <br>
+        1. YAML (YML) file assistant <br/>
+      """
+}

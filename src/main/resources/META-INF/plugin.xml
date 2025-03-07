@@ -1,0 +1,51 @@
+<idea-plugin>
+    <id>com.wd.yaml-helper</id>
+    <name>YamlHelper</name>
+    <vendor email="lerder@foxmail.com" url="">Ler</vendor>
+
+    <description><![CDATA[
+    YamlHelper <br/>
+
+    YAML (YML) file assistant, providing tree view and JSON view to view YAML files.<br/>
+    You can configure remarks for YAML keys and display the remarks in the tree view.<br/>
+    You can copy keys, values, key-value pairs, and node paths in the tree view.<br/>
+    You can jump to the corresponding line in the YAML file from the tree view.<br/>
+
+    yaml(yml)文件助手，提供树视图，JSON视图查看yaml文件。<br/>
+    可以配置yaml key 备注，在树视图中展示备注。<br/>
+    可以在树视图中，复制key，value，key-value，node path。<br/>
+    可以从树视图跳转到yaml文件对应行。<br/>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!--持久化-->
+        <applicationService serviceImplementation="com.wd.yh.persistent.YamlPersistent"/>
+        <projectService serviceImplementation="com.wd.yh.listener.MyProjectManagerListener"/>
+        <!-- 自定义文件编辑器 -->
+        <fileEditorProvider implementation="com.wd.yh.analyzer.YmlFileEditorProvider"/>
+
+        <!--配置页面-->
+        <applicationConfigurable
+                id="yamlHelper.Configurable.YamlHelperConfigurable"
+                parentId="tools"
+                groupWeight="-100"
+                instance="com.wd.yh.config.YamlHelperConfigurable"
+                displayName="Yaml Helper"/>
+
+        <!--自动补全-->
+        <completion.contributor language="any" implementationClass="com.wd.yh.complete.YamlCompletionContributor"/>
+
+        <!--错误提示-->
+        <notification.group id="MyPluginNotificationGroup"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
