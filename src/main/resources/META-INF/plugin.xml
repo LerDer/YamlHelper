@@ -22,6 +22,8 @@
     <!-- uncomment to enable plugin in all products
     -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!--持久化-->
