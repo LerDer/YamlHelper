@@ -80,7 +80,6 @@ public class UIFormEditor extends UserDataHolderBase implements FileEditor {
 	@Override
 	public void selectNotify() {
 		if (yamlEditor != null) {
-			//todo:
 			yamlEditor.selectNotify();
 		}
 	}
